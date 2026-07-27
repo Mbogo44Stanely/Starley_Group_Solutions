@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ page.title }} - {% endblock title %}
+{% block description %}{{ page.meta_description }}{% endblock description %}
+{% block socialTitle %}{{ page.title }} | {% endblock socialTitle %}
+{% block socialDescription %}{{ page.meta_description }}{% endblock socialDescription %}
+
+{% block content %}
+
+    {% for section in page.sections %}
+        {% include "html/pages/sections/"|add:section.type|add:".html" with section=section %}
+    {% endfor %}
+
+{% endblock content %}

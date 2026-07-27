@@ -104,6 +104,21 @@ COMPANY = {
         'country': 'United States',
     },
     'founded_year': 2018,
+    'departments': [
+        {'name': 'Sales', 'icon': 'bi-briefcase',
+         'email': 'sales@starleygroup.com', 'phone': '+1 (555) 010-2031',
+         'description': 'New projects, quotes and partnerships.'},
+        {'name': 'Support', 'icon': 'bi-headset',
+         'email': 'support@starleygroup.com', 'phone': '+1 (555) 010-2032',
+         'description': '24/7 helpdesk for managed-services clients.'},
+        {'name': 'HR & Careers', 'icon': 'bi-people',
+         'email': 'careers@starleygroup.com', 'phone': '+1 (555) 010-2033',
+         'description': 'Recruitment and people enquiries.'},
+    ],
+    # Google Maps embed URL for the headquarters location.
+    'map_embed': (
+        'https://www.google.com/maps?q=Innovation+Drive+Tech+City&output=embed'
+    ),
     'socials': {
         'facebook': 'https://www.facebook.com/',
         'twitter': 'https://twitter.com/',
@@ -119,10 +134,54 @@ PROJECT_TITLE = COMPANY['name']  # name of the project
 # no template edits required. ``anchor`` is optional (used for on-page sections).
 NAV_LINKS = [
     {'label': 'Home', 'url_name': 'home'},
-    {'label': 'Services', 'url_name': 'services'},
-    {'label': 'About', 'url_name': 'home', 'anchor': 'about'},
-    {'label': 'Blog', 'url_name': 'blogs'},
+    {'label': 'About', 'url_name': 'about'},
+    {'label': 'Services', 'children': [
+        {'label': 'All Services', 'url_name': 'services'},
+        {'label': 'Managed IT Infrastructure', 'url_name': 'managed-it'},
+        {'label': 'Cybersecurity & Risk Management', 'url_name': 'cybersecurity-risk'},
+        {'label': 'Cloud Consulting & Migration', 'url_name': 'cloud-consulting'},
+        {'label': 'Digital Transformation & AI', 'url_name': 'digital-transformation'},
+    ]},
+    {'label': 'Industries', 'children': [
+        {'label': 'Financial Services & Banking', 'url_name': 'industry-financial'},
+        {'label': 'Healthcare & Life Sciences', 'url_name': 'industry-healthcare'},
+        {'label': 'Legal & Professional Services', 'url_name': 'industry-legal'},
+    ]},
+    {'label': 'Insights', 'children': [
+        {'label': 'Case Studies & Client Success', 'url_name': 'case-studies'},
+        {'label': 'Knowledge Insights (Blog)', 'url_name': 'blogs'},
+        {'label': 'Partners & Alliances', 'url_name': 'partners'},
+    ]},
+    {'label': 'Careers', 'url_name': 'careers'},
     {'label': 'Contact', 'url_name': 'contact-us'},
+]
+
+# Footer link columns. Data-driven so new modules can extend the footer
+# without template edits.
+FOOTER_COLUMNS = [
+    {'heading': 'Services', 'links': [
+        {'label': 'Managed IT Infrastructure', 'url_name': 'managed-it'},
+        {'label': 'Cybersecurity & Risk', 'url_name': 'cybersecurity-risk'},
+        {'label': 'Cloud Consulting & Migration', 'url_name': 'cloud-consulting'},
+        {'label': 'Digital Transformation & AI', 'url_name': 'digital-transformation'},
+    ]},
+    {'heading': 'Industries', 'links': [
+        {'label': 'Financial Services & Banking', 'url_name': 'industry-financial'},
+        {'label': 'Healthcare & Life Sciences', 'url_name': 'industry-healthcare'},
+        {'label': 'Legal & Professional Services', 'url_name': 'industry-legal'},
+    ]},
+    {'heading': 'Company', 'links': [
+        {'label': 'About Us', 'url_name': 'about'},
+        {'label': 'Careers & Culture', 'url_name': 'careers'},
+        {'label': 'Case Studies', 'url_name': 'case-studies'},
+        {'label': 'Partners & Alliances', 'url_name': 'partners'},
+    ]},
+    {'heading': 'Resources', 'links': [
+        {'label': 'Knowledge Insights', 'url_name': 'blogs'},
+        {'label': 'Contact Us', 'url_name': 'contact-us'},
+        {'label': 'Privacy Policy', 'url_name': 'privacy'},
+        {'label': 'Terms of Service', 'url_name': 'terms'},
+    ]},
 ]
 
 
@@ -155,6 +214,7 @@ LOCAL_APPS = [
     'blog',
     'inquiry',
     'services',
+    'pages',
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

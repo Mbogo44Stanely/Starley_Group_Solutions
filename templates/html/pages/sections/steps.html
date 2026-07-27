@@ -1,0 +1,23 @@
+<section class="tw-w-full tw-px-[10%] tw-py-[6%] tw-flex tw-flex-col tw-place-items-center">
+    {% if section.eyebrow %}
+        <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
+            {{ section.eyebrow }}
+        </span>
+    {% endif %}
+    <h2 class="tw-mt-2 tw-text-4xl max-md:tw-text-3xl tw-font-semibold tw-text-brand-navy tw-text-center">
+        {{ section.heading }}
+    </h2>
+
+    <div class="tw-mt-10 tw-w-full tw-flex tw-flex-wrap tw-gap-6 tw-place-content-center tw-items-stretch">
+        {% for item in section.items %}
+            <div class="tw-w-[250px] tw-flex tw-flex-col tw-gap-3 tw-p-6 tw-rounded-xl tw-bg-white tw-shadow-md">
+                <div class="tw-w-12 tw-h-12 tw-rounded-full tw-flex tw-place-items-center tw-place-content-center
+                            tw-bg-brand-green tw-text-white tw-font-bold tw-text-lg">
+                    {{ forloop.counter }}
+                </div>
+                <h3 class="tw-text-lg tw-font-semibold tw-text-brand-navy">{{ item.title }}</h3>
+                <p class="tw-text-brand-muted tw-text-sm">{{ item.text }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>

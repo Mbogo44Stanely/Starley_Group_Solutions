@@ -1,0 +1,29 @@
+<section class="tw-w-full tw-px-[10%] tw-py-[6%] tw-flex tw-flex-col tw-place-items-center">
+    {% if section.eyebrow %}
+        <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
+            {{ section.eyebrow }}
+        </span>
+    {% endif %}
+    <h2 class="tw-mt-2 tw-text-4xl max-md:tw-text-3xl tw-font-semibold tw-text-brand-navy tw-text-center">
+        {{ section.heading }}
+    </h2>
+    {% if section.subheading %}
+        <p class="tw-mt-3 tw-max-w-[680px] tw-text-center tw-text-lg tw-text-brand-muted">
+            {{ section.subheading }}
+        </p>
+    {% endif %}
+
+    <div class="tw-mt-10 tw-w-full tw-flex tw-flex-wrap tw-gap-6 tw-place-content-center tw-items-stretch">
+        {% for item in section.items %}
+            <div class="tw-w-[260px] tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6 tw-flex tw-flex-col tw-place-items-center tw-text-center">
+                <div class="tw-w-20 tw-h-20 tw-rounded-full tw-flex tw-place-items-center tw-place-content-center
+                            tw-bg-gradient-to-br tw-from-brand-navy tw-to-brand-blue tw-text-white tw-mb-4">
+                    <i class="bi {{ item.icon }} tw-text-3xl"></i>
+                </div>
+                <h3 class="tw-text-lg tw-font-semibold tw-text-brand-navy">{{ item.name }}</h3>
+                <span class="tw-text-brand-green tw-font-semibold tw-text-sm">{{ item.role }}</span>
+                <p class="tw-mt-3 tw-text-brand-muted tw-text-sm">{{ item.bio }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>

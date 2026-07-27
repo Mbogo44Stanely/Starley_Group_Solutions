@@ -25,6 +25,8 @@ user/               # custom user model & auth
 blog/               # blog with WYSIWYG editor in the admin
 inquiry/            # "Contact us" enquiries
 services/           # IT service offerings (example content module)
+pages/              # content-driven marketing pages (about, service lines,
+                    #   industries, case studies, partners, careers, legal)
 styling/            # Tailwind app
 templates/          # html / css / js / assets (images live here, untouched)
 utils/              # shared helpers (validators, mailing, managers, etc.)

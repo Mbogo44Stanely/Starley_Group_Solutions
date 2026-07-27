@@ -162,10 +162,54 @@
                 <li><i class="bi bi-check-circle-fill tw-text-brand-green"></i> Security and compliance built in</li>
                 <li><i class="bi bi-check-circle-fill tw-text-brand-green"></i> Long-term support and partnership</li>
             </ul>
-            <a href="{% url 'services' %}"
+            <a href="{% url 'about' %}"
                 class="btn tw-mt-4 tw-transition-transform hover:tw-translate-x-2 tw-duration-[0.3s]">
                 <span>Read More</span>
                 <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <section class="tw-w-full tw-px-[10%] tw-py-[6%] tw-flex tw-flex-col tw-place-items-center">
+        <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
+            Industries we serve
+        </span>
+        <h2 class="tw-mt-2 tw-text-4xl max-md:tw-text-3xl tw-text-center tw-text-brand-navy tw-font-semibold">
+            Deep expertise in regulated sectors
+        </h2>
+        <div class="tw-mt-10 tw-w-full tw-flex tw-flex-wrap tw-gap-6 tw-place-content-center tw-items-stretch">
+            <a href="{% url 'industry-financial' %}"
+               class="tw-group tw-w-[330px] tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-p-6 tw-rounded-xl tw-shadow-lg
+                      tw-border-b-4 tw-border-transparent hover:tw-border-brand-green tw-transition-all tw-duration-[0.3s] hover:tw-shadow-2xl">
+                <div class="tw-w-14 tw-h-14 tw-rounded-xl tw-flex tw-place-items-center tw-place-content-center
+                            tw-bg-brand-navy group-hover:tw-bg-brand-green tw-transition-colors tw-duration-[0.3s]">
+                    <i class="bi bi-bank tw-text-2xl tw-text-white"></i>
+                </div>
+                <h3 class="tw-text-xl tw-font-semibold tw-text-brand-navy">Financial Services & Banking</h3>
+                <p class="tw-text-brand-muted tw-text-sm">Compliance, data integrity and fraud prevention.</p>
+                <span class="tw-mt-auto tw-text-brand-green tw-font-semibold tw-text-sm">Learn more <i class="bi bi-arrow-right"></i></span>
+            </a>
+            <a href="{% url 'industry-healthcare' %}"
+               class="tw-group tw-w-[330px] tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-p-6 tw-rounded-xl tw-shadow-lg
+                      tw-border-b-4 tw-border-transparent hover:tw-border-brand-green tw-transition-all tw-duration-[0.3s] hover:tw-shadow-2xl">
+                <div class="tw-w-14 tw-h-14 tw-rounded-xl tw-flex tw-place-items-center tw-place-content-center
+                            tw-bg-brand-navy group-hover:tw-bg-brand-green tw-transition-colors tw-duration-[0.3s]">
+                    <i class="bi bi-heart-pulse tw-text-2xl tw-text-white"></i>
+                </div>
+                <h3 class="tw-text-xl tw-font-semibold tw-text-brand-navy">Healthcare & Life Sciences</h3>
+                <p class="tw-text-brand-muted tw-text-sm">Medical data security and telehealth infrastructure.</p>
+                <span class="tw-mt-auto tw-text-brand-green tw-font-semibold tw-text-sm">Learn more <i class="bi bi-arrow-right"></i></span>
+            </a>
+            <a href="{% url 'industry-legal' %}"
+               class="tw-group tw-w-[330px] tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-p-6 tw-rounded-xl tw-shadow-lg
+                      tw-border-b-4 tw-border-transparent hover:tw-border-brand-green tw-transition-all tw-duration-[0.3s] hover:tw-shadow-2xl">
+                <div class="tw-w-14 tw-h-14 tw-rounded-xl tw-flex tw-place-items-center tw-place-content-center
+                            tw-bg-brand-navy group-hover:tw-bg-brand-green tw-transition-colors tw-duration-[0.3s]">
+                    <i class="bi bi-briefcase tw-text-2xl tw-text-white"></i>
+                </div>
+                <h3 class="tw-text-xl tw-font-semibold tw-text-brand-navy">Legal & Professional Services</h3>
+                <p class="tw-text-brand-muted tw-text-sm">Secure document management and high availability.</p>
+                <span class="tw-mt-auto tw-text-brand-green tw-font-semibold tw-text-sm">Learn more <i class="bi bi-arrow-right"></i></span>
             </a>
         </div>
     </section>

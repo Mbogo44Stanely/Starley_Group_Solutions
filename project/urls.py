@@ -18,6 +18,7 @@ from .views import (rate_limiter_view, view_404,
 from .sitemaps import StaticSitemap
 from blog.sitemaps import BlogSitemap
 from services.sitemaps import ServiceSitemap
+from pages.sitemaps import PagesSitemap
 
 handler404 = view_404
 
@@ -29,7 +30,7 @@ admin.site.site_title = 'Starley Group Solutions'
 admin.site.site_url = "/"
 
 
-sitemap_dict = {'sitemaps': {'static': StaticSitemap, 'blog': BlogSitemap, 'services': ServiceSitemap}}
+sitemap_dict = {'sitemaps': {'static': StaticSitemap, 'blog': BlogSitemap, 'services': ServiceSitemap, 'pages': PagesSitemap}}
 
 
 urlpatterns = [
@@ -39,6 +40,7 @@ urlpatterns = [
     path('blog/', include('blog.urls')),
     path('services/', include('services.urls')),
     path('contact-us/', include('inquiry.urls')),
+    path('', include('pages.urls')),
     
 
     path('sitemap.xml', sitemap, sitemap_dict, name='django.contrib.sitemaps.views.sitemap'),

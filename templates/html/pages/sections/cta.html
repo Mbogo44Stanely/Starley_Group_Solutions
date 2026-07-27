@@ -1,0 +1,29 @@
+<section class="tw-w-full tw-px-[10%] tw-py-[6%]">
+    <div class="tw-relative tw-overflow-hidden tw-rounded-2xl tw-px-[8%] tw-py-[5%]
+                tw-bg-gradient-to-br tw-from-brand-navy tw-via-brand-navylight tw-to-[#1c2e52]
+                tw-text-white tw-flex tw-flex-col tw-place-items-center tw-text-center">
+        <div class="tw-absolute tw-top-[-100px] tw-right-[-100px] tw-w-[300px] tw-h-[300px]
+                    tw-rounded-full tw-bg-brand-green/10 tw-blur-3xl tw-pointer-events-none"></div>
+        <h2 class="tw-relative tw-text-4xl max-md:tw-text-3xl tw-font-semibold tw-text-white">
+            {{ section.heading }}
+        </h2>
+        {% if section.subheading %}
+            <p class="tw-relative tw-mt-4 tw-max-w-[620px] tw-text-lg tw-text-slate-300">
+                {{ section.subheading }}
+            </p>
+        {% endif %}
+        <div class="tw-relative tw-mt-7 tw-flex tw-gap-4 tw-flex-wrap tw-place-content-center">
+            {% if section.primary_cta %}
+                <a href="{% url section.primary_cta.url_name %}" class="btn">
+                    <span>{{ section.primary_cta.label }}</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            {% endif %}
+            {% if section.secondary_cta %}
+                <a href="{% url section.secondary_cta.url_name %}" class="btn btn-outline">
+                    {{ section.secondary_cta.label }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>

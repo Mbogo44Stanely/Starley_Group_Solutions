@@ -12,4 +12,5 @@ def site_context(request):
     return {
         'company': settings.COMPANY,
         'nav_links': settings.NAV_LINKS,
+        'footer_columns': settings.FOOTER_COLUMNS,
     }

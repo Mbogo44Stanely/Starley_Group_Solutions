@@ -1,0 +1,30 @@
+<section class="tw-w-full tw-px-[10%] tw-py-[6%] tw-bg-brand-light tw-flex tw-flex-col tw-place-items-center">
+    {% if section.eyebrow %}
+        <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
+            {{ section.eyebrow }}
+        </span>
+    {% endif %}
+    <h2 class="tw-mt-2 tw-text-4xl max-md:tw-text-3xl tw-font-semibold tw-text-brand-navy tw-text-center">
+        {{ section.heading }}
+    </h2>
+    {% if section.subheading %}
+        <p class="tw-mt-3 tw-max-w-[680px] tw-text-center tw-text-lg tw-text-brand-muted">
+            {{ section.subheading }}
+        </p>
+    {% endif %}
+
+    <div class="tw-mt-10 tw-w-full tw-flex tw-flex-wrap tw-gap-6 tw-place-content-center tw-items-stretch">
+        {% for item in section.items %}
+            <div class="tw-group tw-w-[330px] tw-bg-white tw-flex tw-flex-col tw-gap-3 tw-p-6
+                        tw-rounded-xl tw-shadow-lg tw-border-b-4 tw-border-transparent hover:tw-border-brand-green
+                        tw-transition-all tw-duration-[0.3s] hover:tw-shadow-2xl">
+                <div class="tw-w-14 tw-h-14 tw-rounded-xl tw-flex tw-place-items-center tw-place-content-center
+                            tw-bg-brand-navy group-hover:tw-bg-brand-green tw-transition-colors tw-duration-[0.3s]">
+                    <i class="bi {{ item.icon }} tw-text-2xl tw-text-white"></i>
+                </div>
+                <h3 class="tw-text-xl tw-font-semibold tw-text-brand-navy">{{ item.title }}</h3>
+                <p class="tw-text-brand-muted tw-text-sm">{{ item.text }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
