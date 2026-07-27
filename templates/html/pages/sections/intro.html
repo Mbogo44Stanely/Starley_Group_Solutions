@@ -1,0 +1,22 @@
+<section class="tw-w-full tw-px-[10%] tw-py-[5%] tw-flex tw-flex-col tw-place-items-center tw-text-center">
+    {% if section.eyebrow %}
+        <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
+            {{ section.eyebrow }}
+        </span>
+    {% endif %}
+    <h2 class="tw-mt-2 tw-text-4xl max-md:tw-text-3xl tw-font-semibold tw-text-brand-navy">
+        {{ section.heading }}
+    </h2>
+    <div class="tw-mt-5 tw-max-w-[760px] tw-flex tw-flex-col tw-gap-4">
+        {% for paragraph in section.paragraphs %}
+            <p class="tw-text-lg tw-text-brand-muted">{{ paragraph }}</p>
+        {% endfor %}
+    </div>
+    {% if section.bullets %}
+        <ul class="tw-mt-6 tw-flex tw-flex-col tw-gap-2 tw-text-slate-700 tw-text-left">
+            {% for bullet in section.bullets %}
+                <li><i class="bi bi-check-circle-fill tw-text-brand-green"></i> {{ bullet }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</section>

@@ -38,6 +38,13 @@ header > .collapsable-header{
     transition: width 0.3s ease;
 }
 
+/* Allow dropdown menus to escape the header on desktop. */
+@media (min-width: 1024px) {
+    header > .collapsable-header{
+        overflow: visible;
+    }
+}
+
 .animated-collapse{
     transition: width 0.3s ease;
 }

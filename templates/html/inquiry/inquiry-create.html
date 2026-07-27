@@ -17,42 +17,82 @@
 
 {% block content %}
 
-    <section class="tw-w-full tw-flex 
-                    tw-flex-col
-                    tw-place-content-center 
+    <section class="tw-w-full tw-relative tw-overflow-hidden
+                    tw-bg-gradient-to-br tw-from-brand-navy tw-via-brand-navylight tw-to-[#1c2e52]
+                    tw-text-white tw-px-[10%] tw-pt-[9%] tw-pb-[6%] max-md:tw-pt-[22%] tw-text-center
+                    tw-flex tw-flex-col tw-place-items-center">
+        <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
+            Get in touch
+        </span>
+        <h1 class="tw-mt-3 tw-text-5xl max-md:tw-text-3xl tw-font-semibold tw-text-white">
+            Contact us
+        </h1>
+        <p class="tw-mt-4 tw-max-w-[640px] tw-text-lg tw-text-slate-300">
+            Reach the right team directly, or send us your project details and we’ll respond shortly.
+        </p>
+    </section>
+
+    <section class="tw-w-full tw-px-[10%] tw-py-[5%] tw-bg-brand-light tw-flex tw-flex-wrap tw-gap-6 tw-place-content-center">
+        {% for dept in company.departments %}
+            <div class="tw-w-[320px] tw-bg-white tw-rounded-xl tw-shadow-lg tw-p-6 tw-flex tw-flex-col tw-gap-2">
+                <div class="tw-w-12 tw-h-12 tw-rounded-xl tw-flex tw-place-items-center tw-place-content-center tw-bg-brand-navy">
+                    <i class="bi {{ dept.icon }} tw-text-xl tw-text-white"></i>
+                </div>
+                <h3 class="tw-text-lg tw-font-semibold tw-text-brand-navy">{{ dept.name }}</h3>
+                <p class="tw-text-brand-muted tw-text-sm">{{ dept.description }}</p>
+                <a href="mailto:{{ dept.email }}" class="tw-text-brand-green tw-font-semibold tw-text-sm">
+                    <i class="bi bi-envelope"></i> {{ dept.email }}
+                </a>
+                <a href="tel:{{ dept.phone }}" class="tw-text-brand-muted tw-text-sm">
+                    <i class="bi bi-telephone"></i> {{ dept.phone }}
+                </a>
+            </div>
+        {% endfor %}
+    </section>
+
+    <section class="tw-w-full tw-flex tw-flex-wrap
+                    tw-place-content-center tw-gap-10
                     tw-px-[10%]
-                    tw-p-4
-                    tw-gap-5
-                    tw-min-h-[100vh]
-                    tw-place-items-center
-                    max-md:tw-flex-col
+                    tw-py-[5%]
+                    tw-place-items-start
                     tw-overflow-hidden
                     "
                     >
-        
+
+            <div class="tw-flex tw-flex-col tw-gap-4 tw-flex-1 tw-min-w-[320px]">
+                <h2 class="tw-text-3xl tw-text-brand-navy tw-font-semibold">Visit our headquarters</h2>
+                <div class="tw-text-brand-muted">
+                    {{ company.address.line1 }}<br>
+                    {{ company.address.line2 }}<br>
+                    {{ company.address.country }}
+                </div>
+                <div class="tw-w-full tw-h-[320px] tw-rounded-xl tw-overflow-hidden tw-shadow-lg tw-mt-2">
+                    <iframe src="{{ company.map_embed }}" width="100%" height="100%" style="border:0;"
+                            allowfullscreen="" loading="lazy" title="Headquarters map"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+
             <form
                 method="POST"
                 action="{% url "contact-us" %}"
                 onsubmit="return onSubmit(event)"
-                class="tw-flex tw-flex-col tw-gap-[5%] tw-h-full tw-mt-[5%]"
+                class="tw-flex tw-flex-col tw-gap-[5%] tw-h-full tw-flex-1 tw-min-w-[320px]"
             >
                 {% if errors %}
                     <div class="error-container tw-m-2">{{errors}}</div>
                 {% endif %} {% csrf_token %}
 
                 <div class="tw-flex tw-flex-col tw-gap-2">
-                    <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
-                        Get in touch
-                    </span>
-                    <h2 class="tw-text-5xl max-md:tw-text-2xl tw-text-brand-navy tw-font-semibold">
-                        Contact us
+                    <h2 class="tw-text-3xl tw-text-brand-navy tw-font-semibold">
+                        Send us a message
                     </h2>
-                    <h3 class="tw-text-2xl max-md:tw-text-lg tw-text-brand-muted">
+                    <h3 class="tw-text-lg tw-text-brand-muted">
                         Tell us about your project and our team will be in touch shortly.
                     </h3>
                 </div>
                 <div
-                    class="tw-max-w-[550px] tw-min-w-[450px] max-md:tw-min-w-[300px] tw-mt-4 tw-flex tw-flex-col tw-gap-3"
+                    class="tw-w-full tw-mt-4 tw-flex tw-flex-col tw-gap-3"
                 >
                     <div class="tw-flex tw-flex-col tw-gap-4">
                         <div class="tw-flex tw-flex-col tw-gap-1">

@@ -1,0 +1,39 @@
+<section class="tw-w-full tw-relative tw-overflow-hidden
+                tw-bg-gradient-to-br tw-from-brand-navy tw-via-brand-navylight tw-to-[#1c2e52]
+                tw-text-white tw-px-[10%] tw-pt-[9%] tw-pb-[6%] max-md:tw-pt-[22%]">
+
+    <div class="tw-absolute tw-top-[-120px] tw-right-[-120px] tw-w-[380px] tw-h-[380px]
+                tw-rounded-full tw-bg-brand-green/10 tw-blur-3xl tw-pointer-events-none"></div>
+    <div class="tw-absolute tw-bottom-[-140px] tw-left-[-120px] tw-w-[380px] tw-h-[380px]
+                tw-rounded-full tw-bg-brand-blue/20 tw-blur-3xl tw-pointer-events-none"></div>
+
+    <div class="tw-relative tw-max-w-[820px]">
+        {% if section.eyebrow %}
+            <span class="tw-text-sm tw-font-semibold tw-uppercase tw-tracking-widest tw-text-brand-green">
+                {{ section.eyebrow }}
+            </span>
+        {% endif %}
+        <h1 class="tw-mt-3 tw-text-6xl max-md:tw-text-4xl tw-font-semibold tw-leading-tight tw-text-white">
+            {{ section.title }}
+        </h1>
+        {% if section.subtitle %}
+            <p class="tw-mt-5 tw-text-lg tw-text-slate-300 tw-max-w-[680px]">
+                {{ section.subtitle }}
+            </p>
+        {% endif %}
+        <div class="tw-mt-7 tw-flex tw-gap-4 tw-flex-wrap tw-place-items-center">
+            {% if section.primary_cta %}
+                <a href="{% url section.primary_cta.url_name %}"
+                   class="btn tw-transition-transform hover:tw-translate-x-1 tw-duration-[0.3s]">
+                    <span>{{ section.primary_cta.label }}</span>
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            {% endif %}
+            {% if section.secondary_cta %}
+                <a href="{% url section.secondary_cta.url_name %}" class="btn btn-outline">
+                    {{ section.secondary_cta.label }}
+                </a>
+            {% endif %}
+        </div>
+    </div>
+</section>

@@ -1,0 +1,21 @@
+<section class="tw-w-full tw-px-[10%] tw-pt-[9%] tw-pb-[6%] max-md:tw-pt-[22%]">
+    <div class="tw-max-w-[820px] tw-mx-auto">
+        <h1 class="tw-text-4xl max-md:tw-text-3xl tw-font-semibold tw-text-brand-navy">
+            {{ section.heading }}
+        </h1>
+        {% if section.updated %}
+            <p class="tw-mt-2 tw-text-sm tw-text-brand-muted">{{ section.updated }}</p>
+        {% endif %}
+
+        <div class="tw-mt-8 tw-flex tw-flex-col tw-gap-7">
+            {% for block in section.blocks %}
+                <div>
+                    <h2 class="tw-text-xl tw-font-semibold tw-text-brand-navy">{{ block.heading }}</h2>
+                    {% for paragraph in block.paragraphs %}
+                        <p class="tw-mt-2 tw-text-brand-muted tw-leading-relaxed">{{ paragraph }}</p>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
