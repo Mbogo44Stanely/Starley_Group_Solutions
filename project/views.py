@@ -9,6 +9,7 @@ from django.utils.translation import gettext_lazy as _
 
 from django_ratelimit.exceptions import Ratelimited
 
+from services.models import Service
 
 
 def rate_limiter_view(request, *args, **kwargs):
@@ -26,4 +27,6 @@ def handler_403(request, exception=None):
 
 
 def home_view(request):
-    return render(request, 'home.html', status=200)
+    return render(request, 'home.html', {
+        'featured_services': Service.objects.featured(),
+    }, status=200)

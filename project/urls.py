@@ -17,18 +17,19 @@ from .views import (rate_limiter_view, view_404,
 
 from .sitemaps import StaticSitemap
 from blog.sitemaps import BlogSitemap
+from services.sitemaps import ServiceSitemap
 
 handler404 = view_404
 
 handler403 = handler_403
 
-admin.site.site_header = 'Admin panel'           
-admin.site.index_title = 'Site Admin'              
-admin.site.site_title = 'Admin site'
-admin.site.site_url = "" 
+admin.site.site_header = 'Starley Group Solutions Admin'
+admin.site.index_title = 'Site administration'
+admin.site.site_title = 'Starley Group Solutions'
+admin.site.site_url = "/"
 
 
-sitemap_dict = {'sitemaps': {'static': StaticSitemap, 'blog': BlogSitemap}}
+sitemap_dict = {'sitemaps': {'static': StaticSitemap, 'blog': BlogSitemap, 'services': ServiceSitemap}}
 
 
 urlpatterns = [
@@ -36,6 +37,7 @@ urlpatterns = [
     
     path('user/', include('user.urls')),
     path('blog/', include('blog.urls')),
+    path('services/', include('services.urls')),
     path('contact-us/', include('inquiry.urls')),
     
 

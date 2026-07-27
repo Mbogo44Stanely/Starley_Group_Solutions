@@ -49,7 +49,20 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                brand: {
+                    navy: '#0f1b33',
+                    navylight: '#16233d',
+                    blue: '#2563eb',
+                    bluedark: '#1d4ed8',
+                    green: '#22c55e',
+                    greendark: '#16a34a',
+                    muted: '#64748b',
+                    light: '#f4f7fb',
+                },
+            },
+        },
     },
     plugins: [
         /**

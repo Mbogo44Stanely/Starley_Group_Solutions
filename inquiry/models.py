@@ -5,7 +5,12 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class INQUIRY_CHOICE(models.IntegerChoices):
 
-    GENERAL = (0, 'General') # general inquiry
+    GENERAL = (0, 'General')
+    SOFTWARE = (1, 'Software Development')
+    CLOUD = (2, 'Cloud & DevOps')
+    SECURITY = (3, 'Cybersecurity')
+    CONSULTING = (4, 'IT Consulting')
+    SUPPORT = (5, 'Managed IT Support')
 
 
 class Inquiry(models.Model):

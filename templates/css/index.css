@@ -3,10 +3,17 @@
 
 :root{
 
-    --btn-color: #fdfdfd;/* button color*/
-    --btn-bg: #101010;/* button bg color*/
+    --btn-color: #ffffff;/* button text color */
+    --btn-bg: #22c55e;/* button bg color (brand green) */
+    --btn-bg-hover: #16a34a;/* button hover bg */
 
-    --primary-text-color: #1d1b1b;
+    --brand-navy: #0f1b33;
+    --brand-navy-light: #16233d;
+    --brand-blue: #2563eb;
+    --brand-green: #22c55e;
+    --brand-green-dark: #16a34a;
+
+    --primary-text-color: #16233d;
 }
 
 
@@ -48,7 +55,7 @@ header > .collapsable-header{
 
 .header-links:hover {
     color: #fff;
-    background-color: #000;
+    background-color: var(--brand-green);
 }
 
 
@@ -73,19 +80,46 @@ header > .collapsable-header{
 }
 
 .btn{
-    padding: 10px 15px;
+    padding: 10px 18px;
+    gap: 8px;
     width: max-content;
-    border-radius: 10px;
+    border-radius: 8px;
     color: var(--btn-color);
     background-color: var(--btn-bg);
     justify-content: center;
     align-items: center;
     display: flex;
     cursor: pointer;
+    font-weight: 600;
+    box-shadow: 0 6px 16px rgba(34, 197, 94, 0.25);
+    transition: background-color 0.3s, box-shadow 0.3s, transform 0.3s;
 }
 
 .btn:hover{
+    background-color: var(--btn-bg-hover);
+    box-shadow: 0 8px 22px rgba(22, 163, 74, 0.35);
+}
 
+.btn-secondary{
+    background-color: var(--brand-blue);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
+}
+
+.btn-secondary:hover{
+    background-color: var(--brand-blue);
+    filter: brightness(0.92);
+}
+
+.btn-outline{
+    background-color: transparent;
+    color: #ffffff;
+    border: 2px solid rgba(255, 255, 255, 0.7);
+    box-shadow: none;
+}
+
+.btn-outline:hover{
+    background-color: #ffffff;
+    color: var(--brand-navy);
 }
 
 .btn:disabled{
@@ -103,7 +137,7 @@ header > .collapsable-header{
 }
 
 .input:active, .input:focus, .input:focus-within{
-    border-bottom: 2px solid #BE3345 !important;
+    border-bottom: 2px solid var(--brand-green) !important;
 }
 
 
@@ -204,12 +238,22 @@ header > .collapsable-header{
 }
 
 .footer-link{
-    color: #0d0d0d;
+    color: #cbd5e1;
     transition: color 0.3s;
 }
 
 .footer-link:hover{
-    color: #483cf4;
+    color: var(--brand-green);
+}
+
+.footer-socials a{
+    color: #cbd5e1;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.footer-socials a:hover{
+    color: var(--brand-green);
+    transform: translateY(-2px);
 }
 
 
