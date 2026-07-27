@@ -4,7 +4,7 @@ from django.views.decorators.http import require_http_methods
 
 from django_ratelimit.decorators import ratelimit
 
-from .models import Inquiry
+from .models import Inquiry, INQUIRY_CHOICE
 from .forms import InquiryForm
 
 
@@ -13,7 +13,9 @@ def inquiry_view(request):
 
     if request.method == 'GET':
 
-        return render(request, 'inquiry/inquiry-create.html')
+        return render(request, 'inquiry/inquiry-create.html', {
+                'inquiry_types': INQUIRY_CHOICE.choices,
+        })
     
     elif request.method == 'POST':
 
@@ -26,6 +28,7 @@ def inquiry_view(request):
         return render(request, 'inquiry/inquiry-create.html', {
                 'errors': form.errors,
                 'data': request.POST,
+                'inquiry_types': INQUIRY_CHOICE.choices,
         })
     
 

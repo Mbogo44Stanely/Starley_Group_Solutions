@@ -4,3 +4,5 @@ media/
 .env
 firebase-cred.json
 encoded.txt
+.venv/
+styling/static_src/node_modules/

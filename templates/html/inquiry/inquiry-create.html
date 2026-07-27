@@ -12,8 +12,8 @@
 {% endblock head %} {% endcomment %}
 
 
-{% block title %}Contact us Form - {% endblock title %}
-{% block description %}Contact us{% endblock description %}
+{% block title %}Contact us - {% endblock title %}
+{% block description %}Get in touch with {{ company.name }}. Tell us about your project and our team will respond shortly.{% endblock description %}
 
 {% block content %}
 
@@ -44,8 +44,8 @@
                     <h2 class="tw-text-5xl max-md:tw-text-xl primary-text-color tw-font-medium">
                         Contact us
                     </h2>
-                    <h3 class="tw-text-3xl max-md:tw-text-3xl">
-                        Get your Template
+                    <h3 class="tw-text-2xl max-md:tw-text-xl tw-text-gray-600">
+                        Tell us about your project and our team will be in touch shortly.
                     </h3>
                 </div>
                 <div
@@ -98,8 +98,20 @@
                             />
                         </div>
 
+                        <div class="tw-flex tw-flex-col tw-gap-1">
+                            <div class="tw-text-gray-500">How can we help?</div>
+                            <select name="inquiry_type" class="input">
+                                {% for value, label in inquiry_types %}
+                                    <option value="{{ value }}"
+                                        {% if data.inquiry_type == value|stringformat:"s" %}selected{% endif %}>
+                                        {{ label }}
+                                    </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
                         <div class="tw-flex tw-flex-col tw-w-full tw-gap-2">
-                            <div class="tw-text-gray-500">Enquiry</div>
+                            <div class="tw-text-gray-500">Message</div>
                             <textarea
                                 class="input tw-resize-y tw-w-full tw-max-h-[250px] tw-min-h-[40px]"
                                 name="description"

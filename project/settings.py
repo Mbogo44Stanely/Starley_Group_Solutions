@@ -74,8 +74,6 @@ if not DEBUG:
     CSRF_TRUSTED_ORIGINS = env('ALLOWED_CORS').replace(' ', '').split(',')
 
 
-PROJECT_TITLE = 'Project' # name of the project
-
 if DEBUG:
     DOMAIN = "http://localhost:8000"
 
@@ -83,10 +81,54 @@ else:
     DOMAIN = env('DOMAIN')
 
 
+# ---------------------------------------------------------------------------
+# Company / site details
+#
+# Centralised here and injected into every template by
+# ``core.context_processors.site_context`` so branding lives in one place.
+# ---------------------------------------------------------------------------
+COMPANY = {
+    'name': 'Starley Group Solutions',
+    'short_name': 'Starley',
+    'tagline': 'Innovative IT solutions that move your business forward',
+    'description': (
+        'Starley Group Solutions is an IT company delivering software '
+        'development, cloud, cybersecurity and managed IT services to '
+        'businesses of every size.'
+    ),
+    'email': 'info@starleygroup.com',
+    'phone': '+1 (555) 010-2030',
+    'address': {
+        'line1': '100 Innovation Drive, Suite 400',
+        'line2': 'Tech City, TC 10101',
+        'country': 'United States',
+    },
+    'founded_year': 2018,
+    'socials': {
+        'facebook': 'https://www.facebook.com/',
+        'twitter': 'https://twitter.com/',
+        'linkedin': 'https://www.linkedin.com/',
+        'instagram': 'https://www.instagram.com/',
+        'github': 'https://github.com/',
+    },
+}
+
+PROJECT_TITLE = COMPANY['name']  # name of the project
+
+# Primary navigation. Add a new module's link here and it appears everywhere;
+# no template edits required. ``anchor`` is optional (used for on-page sections).
+NAV_LINKS = [
+    {'label': 'Home', 'url_name': 'home'},
+    {'label': 'Services', 'url_name': 'services'},
+    {'label': 'About', 'url_name': 'home', 'anchor': 'about'},
+    {'label': 'Blog', 'url_name': 'blogs'},
+    {'label': 'Contact', 'url_name': 'contact-us'},
+]
+
+
 # Application definition
 
-INSTALLED_APPS = [
-
+DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -94,22 +136,28 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django.contrib.sites',  # sitemaps 
-    'django.contrib.sitemaps',  # sitemaps 
+    'django.contrib.sites',  # sitemaps
+    'django.contrib.sitemaps',  # sitemaps
+]
 
-
-    # 3rd party
+THIRD_PARTY_APPS = [
     'tailwind',
     'corsheaders',
     'django_browser_reload',
-
     'styling',
+]
 
-    #first party
+# First-party apps. Add new modules here -- the core infrastructure
+# (base models, context processor, settings) requires no changes.
+LOCAL_APPS = [
+    'core',
     'user',
     'blog',
     'inquiry',
+    'services',
 ]
+
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
 SITE_ID = 1 # for sitemaps
@@ -180,6 +228,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'core.context_processors.site_context',
             ],
             'libraries':{
                 'custom_tags': 'project.templatetags.custom_tags',

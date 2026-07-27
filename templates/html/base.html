@@ -17,15 +17,15 @@
 
     <title>{% block title %}{% endblock title %} {% settings_value "PROJECT_TITLE" %}</title>
     <meta name="description" 
-            content="{% block description %}Building websites that brings you business{% endblock description %}">
+            content="{% block description %}{{ company.description }}{% endblock description %}">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="{% block socialTitle %}{% endblock socialTitle %} Project" />
+    <meta property="og:title" content="{% block socialTitle %}{% endblock socialTitle %} {{ company.name }}" />
     <meta property="og:description" 
-                        content="{% block socialDescription %}Description Here{% endblock socialDescription %}" />
+                        content="{% block socialDescription %}{{ company.description }}{% endblock socialDescription %}" />
     <meta property="og:type" content="{% block pageType %}website{% endblock pageType %}" />
     <meta property="og:url" content="{% block pageLink %}{{request.build_absolute_uri}}{% endblock pageLink %}" />
-    <meta property="og:image" content="{% block pageImage %}{{ request.scheme }}://{{request.get_host}}{% static "./assets/images/home/hiking4.jpg" %}{% endblock pageImage %}" />
+    <meta property="og:image" content="{% block pageImage %}{{ request.scheme }}://{{request.get_host}}{% static "./assets/images/home/dashboard.png" %}{% endblock pageImage %}" />
 
     <!-- Twitter -->
     {% comment %} 
@@ -109,19 +109,11 @@
                             tw-text-black
                         ">
                     
-                <a class="header-links" href="{% url "home" %}">
-                    About us
-                </a>
-                <a class="header-links" href="{% url "blogs" %}"
-                        rel="noreferrer"
-                        >
-                    Blogs
-                </a>
-                <a class="header-links" href="{% url "contact-us" %}"
-                        rel="noreferrer"
-                        >
-                    Contact us
-                </a>
+                {% for link in nav_links %}
+                    <a class="header-links" href="{% url link.url_name %}{% if link.anchor %}#{{ link.anchor }}{% endif %}">
+                        {{ link.label }}
+                    </a>
+                {% endfor %}
             </div>
             <div class="tw-flex tw-gap-[20px] tw-place-items-center tw-text-xl
                          max-lg:!tw-text-white
@@ -129,39 +121,27 @@
                         max-lg:tw-w-full
                          max-lg:tw-place-items-start
                          ">
-                <a href="https://www.facebook.com/" 
+                <a href="{{ company.socials.linkedin }}" 
                         target="_blank" 
                         rel="noreferrer"
-                        aria-label="facebook"
-                        class=" header-links
-                                tw-transition-colors
-                                tw-duration-[0.3s]
-                                "
-                        >
-                    <i class="bi bi-facebook"></i>
+                        aria-label="linkedin"
+                        class=" header-links tw-transition-colors tw-duration-[0.3s]">
+                    <i class="bi bi-linkedin"></i>
                 </a>
 
-                <a href="https://www.instagram.com/"
+                <a href="{{ company.socials.twitter }}"
                         target="_blank"
                         rel="noreferrer"
-                        aria-label="instagram"
-                        class="header-links
-                                tw-transition-colors
-                                tw-duration-[0.3s]
-                                "
-                            >
-                    <i class="bi bi-instagram"></i>
+                        aria-label="twitter"
+                        class="header-links tw-transition-colors tw-duration-[0.3s]">
+                    <i class="bi bi-twitter-x"></i>
                 </a>
-                <a href="https://github.com/PaulleDemon"
+                <a href="{{ company.socials.facebook }}"
                         target="_blank"
                         rel="noreferrer"
-                        aria-label="github"
-                        class="header-links
-                                tw-transition-colors
-                                tw-duration-[0.3s]
-                                "
-                            >
-                    <i class="bi bi-github"></i>
+                        aria-label="facebook"
+                        class="header-links tw-transition-colors tw-duration-[0.3s]">
+                    <i class="bi bi-facebook"></i>
                 </a>
             </div>
         </div>
@@ -188,24 +168,32 @@
             
             <img src="{% static "assets/logos/logo1.png" %}" 
                 alt="logo"  class="tw-max-w-[150px] max-md:tw-max-w-[120px]">
-            <div>
-                2 Lord Edward St,   
+            <div class="tw-text-center">
+                {{ company.address.line1 }}
                 <br>
-                D02 P634,
+                {{ company.address.line2 }}
                 <br>
-                United States
+                {{ company.address.country }}
+            </div>
+            <div class="tw-text-center tw-text-sm">
+                <a href="mailto:{{ company.email }}" class="footer-link">{{ company.email }}</a>
+                <br>
+                <a href="tel:{{ company.phone }}" class="footer-link">{{ company.phone }}</a>
             </div>
             <div class="tw-mt-3 tw-font-semibold tw-text-lg">
                 Follow us
             </div>
             <div class="tw-flex tw-gap-4 tw-text-2xl">
-                <a href="https://facebook.com/" aria-label="Facebook">
+                <a href="{{ company.socials.linkedin }}" aria-label="LinkedIn">
+                    <i class="bi bi-linkedin"></i>
+                </a>
+                <a href="{{ company.socials.twitter }}" aria-label="Twitter">
+                    <i class="bi bi-twitter-x"></i>
+                </a>
+                <a href="{{ company.socials.facebook }}" aria-label="Facebook">
                     <i class="bi bi-facebook"></i>
                 </a>
-                <a href="https://twitter.com/pauls_freeman" aria-label="Twitter">
-                    <i class="bi bi-twitter"></i>
-                </a>
-                <a href="https://instagram.com/" class="tw-w-[40px] tw-h-[40px]" aria-label="Instagram">
+                <a href="{{ company.socials.instagram }}" aria-label="Instagram">
                    <i class="bi bi-instagram"></i>
                 </a>
             </div>
@@ -218,10 +206,10 @@
                 Resources
             </h2>
             <div class=" tw-flex tw-flex-col tw-gap-3 max-md:tw-text-sm">
-                <a href="{% url "home" %}" class="footer-link">About us</a>
-                <a href="" class="footer-link">FAQ</a>
-                <a href="{% url "contact-us" %}" class="footer-link">Contact Us</a>
-                <a href="" class="footer-link">Privacy policy</a>
+                <a href="{% url "home" %}#about" class="footer-link">About us</a>
+                <a href="{% url "services" %}" class="footer-link">Services</a>
+                <a href="{% url "blogs" %}" class="footer-link">Blog</a>
+                <a href="{% url "contact-us" %}" class="footer-link">Contact us</a>
             </div>
 
         </div>
